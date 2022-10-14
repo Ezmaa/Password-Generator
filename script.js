@@ -1,20 +1,10 @@
 // Assignment Code
 const generateBtn = document.querySelector("#generate");
 
-function randomInt(min, max){
-    return Math.floor(math.random()*(max - min) + min)
-}
-
-function randomItem(list) {
-    return list[randomInt(0, list.length -1)]
-}
 
 function generatePassword() {
 
     const userInput = prompt("Choose an amount of characters between 8 and 128.");
-
-    // console.log(userInput);
-
     const passwordLength = parseInt(userInput)
 
     if (isNaN(passwordLength)) {
@@ -32,46 +22,36 @@ function generatePassword() {
     const upperCases = confirm("Add uppercase characters?");
     const addSpecial = confirm("Add special characters?");
 
+    let numberCharacter = ['0123456789']
+    let lowerAlphabetCharacters = ['abcdefghijklmnopqrstuvwxyz']
+    let upperAlphabetCharacters = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+    let specialCharacters = ['!@#$%^&*()']
 
-
-    const numberCharacter = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    const lowerAlphabetCharacters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    const upperAlphabetCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-        'Y', 'Z']
-    const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
-
-
-
-    var allList = []
-
+    let allList = []
 
     if (addNumbers) {
-        allList += allList.concat(numberCharacter)
+        allList += numberCharacter;
     }
 
     if (lowerCases) {
-        allList += allList.concat(lowerAlphabetCharacters)
+        allList += lowerAlphabetCharacters;
     }
 
     if (upperCases) {
-        allList += allList.concat(upperAlphabetCharacters)
+        allList += upperAlphabetCharacters;
         
     }
 
     if (addSpecial) {
-        allList += allList.concat(specialCharacters)
+        allList += specialCharacters;
     }
+        let password = "";
 
-    const generatePassword = ""
-
-   
     for (let i=0; i < passwordLength; i++) {
-        const randomList = randomItem(allList[i])
-        const randomChar = randomItem(randomList)
-        console.log(randomChar)
+        let randomNum = Math.floor(Math.random()* allList.length);
+        password += allList.substring(randomNum, randomNum + 1);
     }
-
+    return password;
 }
 
 
