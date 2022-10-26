@@ -33,6 +33,12 @@ function generatePassword() {
 
     let allList = []
 
+    if (!addNumbers && !lowerCases && !upperCases && !addSpecial) {
+        window.alert("At least one option must be choosen.")
+        generatePassword();
+        return;
+    }
+
     if (addNumbers) {
         allList += numberCharacter;
     }
@@ -50,10 +56,6 @@ function generatePassword() {
         allList += specialCharacters;
     }
 
-    if (!addNumbers && !lowerCases && !upperCases && !addSpecial) {
-        window.alert("At least one option must be choosen.")
-        return;
-    }
     let password = "";
 
     for (let i = 0; i < passwordLength; i++) {
